@@ -21,15 +21,46 @@
     <span>'Syntra komt voor':</span>
     <span id="syntra"></span>
     <br>
-    <button>Uppercase</button>
+    <button onclick="uppercase();">Uppercase</button>
     
-    <button>Lowercase</button>
+    <button onclick="lowercase();">Lowercase</button>
     <script>
         function checkTextarea(){
-            
+
+            var tekst = txtZin.value;
+            var tekstZonderSpaties = tekst.replace(/\s+/g, '');
+
+            document.getElementById("letters").innerHTML = tekstZonderSpaties.length;
+
+            var aantal = tekst.split(" ");
+            document.getElementById("woorden").innerHTML = aantal.length;
+
+            var laatsteWord = aantal.length;
+            var woord = aantal[laatsteWord-1];
+            document.getElementById("laatste").innerHTML = woord;
+
+            var syntra = tekst.indexOf("Syntra");
+            if(syntra == -1){
+                document.getElementById("syntra").innerHTML = "Komt NIET voor.";
+            }
+            else{
+                document.getElementById("syntra").innerHTML = "Komt  voor.";
+            }
 
         }
+        function uppercase(){
+            var txtZin = document.getElementById("txtZin");
+            var tekst = txtZin.value;
+            console.log(tekst);
+            txtZin.value = tekst.toUpperCase();
+        }
 
+        function lowercase(){
+            var txtZin = document.getElementById("txtZin");
+            var tekst = txtZin.value;
+            console.log(tekst);
+            txtZin.value = tekst.toLowerCase();
+        }
     </script>
 </body>
 </html>
